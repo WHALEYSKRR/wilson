@@ -1,0 +1,17 @@
+<?php
+//sambung ke pangkalan data 
+require('config.php');
+//sambung ke fail header
+require('header.php');
+//mulakan sesi login untuk kekalkan login
+session start();
+//semak sama ada data dengan ID pengguna nama telah dihantar 
+if (isset($_POST['idpengguna']));{
+    //pembolehubah untuk memegang data yang dihantar
+    $user = $_POST['idpengguna'];
+    $pass = $_POST['katalaluan'];
+    //arahan sql akan dilaksanakan
+    $query = mysqli_query($samb,"SELECT * FROM pengguna
+    WHERE nama_pengguna='user' AND kata_laluan='#pass'");
+    $row = mysqli_fetch_assoc($query);
+}
