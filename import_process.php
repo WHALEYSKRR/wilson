@@ -22,7 +22,7 @@ window.location = \"pekerja.php\"
 </script>";
 }
 }
-fclose($file;)
+fclose($file);
     }
 }
 ?>

@@ -6,16 +6,15 @@ if(isset($_POST['update'])){
     $namaPekerja=$_POST['namaPekerja'];
     $kataLaluan=$_POST['kataLaluan'];
     $telefon=$_POST['noTelefonPekerja'];
-    $aras=$_POST['level'];
 
-    $result=mysqli_query($samb,"UPDATE pengguna SET idPekerja='$idPekerja',kataLaluan='$kataLaluan',noTelefonPekerja='$telefon',status='$aras' WHERE namaPekerja='$namaPekerja'");
+    $result=mysqli_query($samb,"UPDATE pengguna SET namaPekerja='$namaPekerja' ,kataLaluan='$kataLaluan',noTelefonPekerja='$telefon' WHERE idPekerja='$idPekerja'");
     echo "<script>alert('Kemaskini rekod telah berjaya');
     window.location='pekerja.php'</script>";
 }
 ?>
 <?php
 $id=$_GET['kemaskini_id'];
-$result=mysqli_query($samb, "SELECT * FROM pengguna WHERE namaPekejar='$namaPekerja'");
+$result=mysqli_query($samb, "SELECT * FROM pengguna WHERE idPekerja='$id'");
 while($res=mysqli_fetch_array($result)){
     $user=$res['namaPekerja'];
     $pekerja=$res['idPekerja'];
@@ -32,7 +31,7 @@ while($res=mysqli_fetch_array($result)){
 <form name="form1" action="kemaskini_pekerja.php" method="POST">
 <table width="700" border="1" align="center">
 <tr>
-<td width="200">ID PEKRJA:</td>
+<td width="200">ID PEKERJA:</td>
 <td width="400"><input type="text" name="idPekerja" id="idPekerja" value="<?php echo $pekerja;?>"/></td>
 </tr>
 <tr>

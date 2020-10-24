@@ -31,15 +31,14 @@ while($info1=mysqli_fetch_array($data1))
     <td><?php echo $info1['idPekerja']; ?></td>
     <td><?php echo $info1['namaPekerja']; ?></td>
     <td><?php echo $info1['kataLaluan']; ?></td>
-    <td><a href="kemaskini_pekerja.php?kemaskini_id=<? php echo $info1['idPekerja'];?>">Kemaskini
+    <td><a href="kemaskini_pekerja.php?kemaskini_id=<?php echo $info1['idPekerja'];?>">Kemaskini
     </a>
     <?php
     //SEKIRANYA BUKAN ADMIN BOLEH DELETE AKAUN PENGGUNA - ADMIN TIDAK BOLEH
     if ($info1['status']!="ADMIN")
     {
         ?>
-        <a href="hapus_pekerja.php?hapus_id=
-            <?php echo $info1['nama_pengguna'];?>">Hapus</a>
+        <a href="hapus_pekerja.php?hapus_id=<?php echo $info1['idPekerja'];?>">Hapus</a>
         <?php
     } 
     ?>
