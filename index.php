@@ -9,28 +9,28 @@ session_start();
 if (isset($_POST['idPekerja'])){
     //pembolehubah untuk memegang data yang dihantar
     $user = $_POST['idPekerja'];
-    $pass = $_POST['katalaluan'];
+    $pass = $_POST['kataLaluan'];
     //arahan sql akan dilaksanakan
     $query = mysqli_query($samb,"SELECT * FROM pengguna
     WHERE idPekerja='$user' AND kataLaluan='$pass'");
     $row = mysqli_fetch_assoc($query);
 
-if(mysqli_num_rows($query) == 0 || $row['kataLaluan']!=$pass) 
-{
-    //papar mesej gagal login
-    echo"<script>alert('ID pengguna atau Katalaluan yang salah');
-    window.location='index.php'</script>";
-}
-else
-{
-    $_SESSION['idPekerja']=$row['namaPekerja'];
-    $_SESSION['level'] = $row['status'];    
-    //cipta sesi login
-    $jurujual=$_SESSION['idPekerja'];
+    if(mysqli_num_rows($query) == 0 || $row['kataLaluan']!=$pass) 
+    {
+        //papar mesej gagal login
+        echo"<script>alert('ID pengguna atau Katalaluan yang salah');
+        window.location='index.php'</script>";
+    }
+    else
+    {
+        $_SESSION['idPekerja']=$row['namaPekerja'];
+        $_SESSION['level'] = $row['status'];    
+        //cipta sesi login
+        $jurujual=$_SESSION['idPekerja'];
 
-    //buka page utama berdasarkan level login
-    header("Location: index2.php");
-}
+        //buka page utama berdasarkan level login
+        header("Location: index2.php");
+    }
 }
 ?>
 <html>
