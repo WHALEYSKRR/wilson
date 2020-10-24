@@ -11,7 +11,7 @@ if (isset($_GET["nomplat"]))
 }
 else
 {
-    data1=mysqli_query($samb,"select * from kenderaan");
+    $data1=mysqli_query($samb,"select * from kenderaan");
 }
 
 $nomplat=$_GET["nomplat"];
@@ -61,15 +61,15 @@ while ($info1=mysqli_fetch_array($data1))
     </tr>
     <tr>
     <td width="200">NOMBOR KAD PENGENALAN:</td>
-    <td width="400"><input type="text" name="nomic"
-    id="nomplat" placeholder="851225035255" maxlength='12'
+    <td width="400"><input type="text" name="icpelanggan"
+    id="icpelanggan" placeholder="851225035255" maxlength='12'
     onkeypress='return event.charCode >=48 && event.charCode <= 57'
     required autofocus /></td>
     </tr>
     <tr>
     <td width="200">NAMA PENUH:</td>
-    <td width="400"><input type="text" name="nama"
-    id="nama" placeholder="RAZMAN BIN ROSLI" size="60"required />
+    <td width="400"><input type="text" name="namaPelanggan"
+    id="namaPelanggan" placeholder="RAZMAN BIN ROSLI" size="60"required />
     </td>
     </tr>
     <tr>

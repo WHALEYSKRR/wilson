@@ -10,5 +10,6 @@ if (mysqli_connect_errno()){
 $namasistem="EZCAR";
 $namakedai="Ezcar";
 $alamat="Lot 88 , Taman Indah , <br> 18000 Kuala Pilah 72000, Perak.";
+$moto="BANDINGKAN HARGA KITA";
 $logo="header1.jpg";
 ?>

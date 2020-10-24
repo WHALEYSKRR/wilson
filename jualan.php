@@ -10,7 +10,7 @@ if (isset($_GET["nomplat"]))
     }
     else
     {
-        $data1=mysqli_query($samb,"select * from kenderaan");
+        $data1=mysqli_query($samb,"SELECT * from kenderaan");
     }
 ?>
 
@@ -35,8 +35,7 @@ if(isset($_GET["nomplat"])){
     while ($infoKereta=mysqli_fetch_array($dataKereta))
     {
         echo "<option value='borang_jualan.php?
-        nomplat=$infoKereta[nomplat]'>$infoKereta[nomplat]
-        </option>";
+        nomplat=$infoKereta[nomplat]'>$infoKereta[nomplat]</option>";
     }
 ?>
 </select>
