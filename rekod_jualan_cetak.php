@@ -48,24 +48,24 @@ $tahun=$_POST["tahun"];
 if($bulan=="-"&&$tahun=="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
-    ORDER BY nomplat,tarikh");
+    ORDER BY nomplat,tarikhJualan");
 }
 elseif ($bulan!="-"&&$tahun=="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
     WHERE MONTH(tarikh)='$bulan'
-    ORDER BY nomplat,tarikh");
+    ORDER BY nomplat,tarikhJualan");
 }
 elseif ($bulan!="-"&&$tahun!="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
-    WHERE ((MONTH(tarikh)='$bulan' AND YEAR(tarikh)='$tahun') )
-    ORDER BY nomplat,tarikh");
+    WHERE ((MONTH(tarikhJualan)='$bulan' AND YEAR(tarikhJualan)='$tahun') )
+    ORDER BY nomplat,tarikhJualan");
 }
 elseif ($bulan=="-"&&$tahun!="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
-    WHERE YEAR(tarikh)='$tahun' ORDER BY nomplat,tarikh");
+    WHERE YEAR(tarikhJualan)='$tahun' ORDER BY nomplat,tarikhJualan");
 }
 
 $bil_rekod=mysqli_num_rows($data1);
@@ -82,19 +82,19 @@ while ($info1=mysqli_fetch_array($data1))
     $infoJurujual=mysqli_fetch_array($dataJurujual);
 
     //susun semula tarikh
-    $tarikh = data("d/m/y", strtotime($info1['tarikh']));
+    $tarikh = data("d/m/y", strtotime($info1['tarikhJualan']));
 
     ?>
 <!-- PAPAR REKOD DALAM JUALAN -->
 <tr>
-<td><?php echo$no; ?></td>
+<td><?php echo $no; ?></td>
 <td><?php echo $infokereta['nomplat']; ?></td>
 <td><?php echo $infokereta['model']; ?></td>
 <td><?php echo "<img src='gambar/".$infokereta['gambar']."'
 width='200px' height='100px'/>"; ?></td>
 <td><?php echo $infokereta['tahun_perbuat']; ?></td>
 <td><?php echo $tarikh; ?></td>
-<td><?php echo $infoJurujual['nama']; ?></td>
+<td><?php echo $infoJurujual['namaPekerja']; ?></td>
 <td>RM <?php echo $infokereta['harga']; 
 
 $jumBesar+=$infokereta['harga'];

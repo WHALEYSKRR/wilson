@@ -1,7 +1,5 @@
 <?php
-//sambung ke pangkalan data
 require('config.php');
-//sambung ke fail header
 require('header.php');
 ?>
 <html>
@@ -22,14 +20,10 @@ require('header.php');
 <td width="200"><b>Gambar</b></td>
 <td width="100"><b>Tindakan</b></td>
 </tr>
-
 <?php
-$data1 = mysqli_query($samb,"SELECT * FROM kenderaan
-ORDER BY status, tahun_perbuat DESC");
-$no = 1;
-while ($info1=mysqli_fetch_array($data1)){
-
-
+$data1=mysqli_query($samb,"SELECT * FROM kenderaan ORDER BY status, tahun_perbuat DESC");
+$no=1;
+while($info1=mysqli_fetch_array($data1)){
     ?>
     <tr>
     <td><?php echo $no; ?></td>
@@ -41,9 +35,9 @@ while ($info1=mysqli_fetch_array($data1)){
     <td> <?php echo "<img src='./gambar/".$info1['gambar']."' width='200px' height='100px'/>"; ?> 
 <td><a href="kemaskini_kenderaan.php?nomplat=<?php echo $info1['nomplat'];?>">Kemaskini
 </a> | <a href="hapus_kenderaan.php?nomplat=<?php echo $info1['nomplat'];?>">Hapus</a>
-       </td>
-        </tr>
-        <?php $no++; } ?>
+    </td>
+    </tr>
+    <?php $no++; } ?>
 </table>
 </fieldset>
 <a href='index2.php'> Ke menu Utama</a><br>
