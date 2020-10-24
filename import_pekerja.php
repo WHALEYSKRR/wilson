@@ -10,9 +10,10 @@ require('header.php');
 <label>Pilih lokasi fail CSV/Excel:</label>
 <form action="import_process.php" method="post"
 name="upload_excel" enctype="multipart/form-data">
-<input type="file" name="file" id="file" class=input-large"><br>
+<input type="file" name="file" id="file" class="input-large"><br>
 <button type="submit" id="submit" name="Import" >Upload</button>
 </form><br>
+<a href="index2.php">Menu Utama</a><br>
 </fielset></center>
 </body>
 </html>
