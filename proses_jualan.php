@@ -3,15 +3,17 @@
 require('config.php');
 //ambil nama penjual
 session_start();
-$jurujual=$_SESSION['idpengguna'];
+$jurujual=$_SESSION['idPekerja'];
 
-if(isseet($_POST['nomic']))
+echo $_POST['nomic'], $_POST['nama'];
+
+if(isset($_POST['nomic']))
 {
 
     //pelanggan
     $nomic=$_POST['nomic'];
     $nama=$_POST['nama'];
-    $nomph=$_POST['nomph'];
+    $nomhp=$_POST['nomhp'];
 
     //alamat
     $alamat1=$_POST['alamat1'];
@@ -23,27 +25,22 @@ if(isseet($_POST['nomic']))
     $tarikh=$_POST['tarikh'];
     $nomplat=$_POST['nomplat'];
     $bayaran=$_POST['bayaran'];
+    $idJualan = 'G' . strval(rand(1000,9999));
 
     //WUJUDKAN SESSION - NOMPLAT
     $_SESSION['nomplat']=$nomplat;
 
     //TAMBAH REKOD - JUALAN
     $result1 = mysqli_query($samb,
-    "INSERT INTO jualan
-    idjualan,tarkih,jenis_bayaran,nomplat,idpelanggan,idpekerja
-    VALUES (NULL,'$tarikh','$bayaran','$nomplat','$nomic','$jurujual')");
+    "INSERT INTO jualan VALUES ('$idJualan','$tarikh','$bayaran','$nomplat','$nomic','$jurujual', '$nama')");
 
     //TAMBAH REKOD - TABLE PELANGGAN
     $result2 = mysqli_query($samb,
-    "INSERT INTO pelanggan (icpelanggan,nama,nomhp)
-    values ('$nomic',$nama','$nomhp')");
+    "INSERT INTO pelanggan VALUES ('$nomic',$nama','$nomhp')");
 
     //TAMBAH REKKOD - TABLE ADDRESS
     $result3 = mysqli_query($samb,
-    "INSERT INTO alamat
-    (idalamat,alamat1,alamat2,bandar,poskod,negeri,icpelanggan)
-    values
-    (NULL,'$alamat1','$alamat2','$bandar','$poskod','$negeri','$nomic')");
+    "INSERT INTO alamat values ('$nama','$alamat1','$alamat2','$bandar','$poskod','$negeri')");
 
     //TAMBAH REKOD - KENDERAAN
     $result4 = mysqli_query($samb,
@@ -52,8 +49,8 @@ if(isseet($_POST['nomic']))
     WHERE nomplat='$nomplat'");
 
     //PAPARAN MESEJ JIKA REKOD BERJAYA DI SIMPAN
-    echo "<script>alert('Penambahan rekod jualan telah berjaya';
-    window.location='cetak_resit.php'</script>";
+    echo "<script>alert('Penambahan rekod jualan telah berjaya');
+    window.location='cetakan_resit.php';</script>";
 
 }
 ?>

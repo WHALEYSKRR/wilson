@@ -33,17 +33,17 @@ Nombor Resit: <?php echo $rawak; ?>
 </table></td>
 
 <?php
-$dataA=mysqli_query($samb,"SELECT * FROM jualan WHERE nomplat='$nomplat'");
+$dataA=mysqli_query($samb,"SELECT * FROM jualan WHERE noplat='$nomplat'");
 $infoA=mysqli_fetch_array($dataA);
 
-$dataB=mysqli_query($samb,"SELECT * FROM pelanggan WHERE icpelanggan='$infoA[idpelanggan]'");
-$infoA=mysqli_fetch_array($dataB);
+$dataB=mysqli_query($samb,"SELECT * FROM pelanggan WHERE icpelanggan='$infoA[icPelanggan]'");
+$infoB=mysqli_fetch_array($dataB);
 
-$dataC=mysqli_query($samb,"SELECT * FROM alamat WHERE namapelanggan='$infoB[namaPelanggan]'");
-$infoA=mysqli_fetch_array($dataC);
+$dataC=mysqli_query($samb,"SELECT * FROM alamat WHERE namapelanggan='$infoA[namaPelanggan]'");
+$infoC=mysqli_fetch_array($dataC);
 
-$dataE=mysqli_query($samb,"SELECT * FROM kenderaan WHERE nomplat='$infoA[nomplat]'");
-$infoA=mysqli_fetch_array($dataE);
+$dataE=mysqli_query($samb,"SELECT * FROM kenderaan WHERE nomplat='$infoA[noplat]'");
+$infoE=mysqli_fetch_array($dataE);
 
 $tarikhJualan=date("d-m-y", strtotime($infoA['tarikhJualan']));
 ?>
@@ -63,11 +63,11 @@ Nombor Plat:<br>Model:</td>
 </tr>
 <tr>
 <td width="300">NAMA PELANGGAN:</td>
-<td width="400"><?php echo $infoB['namaPelanggan']; ?></td>
+<td width="400"><?php echo $infoA['namaPelanggan']; ?></td>
 </tr>
 <tr>
 <td width="300">NOMBOR KAD PENGENALAN:</td>
-<td width="400"> <?php echo $infoA['icpelanggan']; ?></td>
+<td width="400"> <?php echo $infoA['icPelanggan']; ?></td>
 </tr>
 
 <tr>

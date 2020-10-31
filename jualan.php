@@ -34,20 +34,16 @@ if(isset($_GET["nomplat"])){
     echo"<option>$_GET[model]</option>";}
     while ($infoKereta=mysqli_fetch_array($dataKereta))
     {
-        echo "<option value='borang_jualan.php?
-        nomplat=$infoKereta[nomplat]'>$infoKereta[nomplat]</option>";
+        echo "<option value='borang_jualan.php?nomplat=$infoKereta[nomplat]'>$infoKereta[nomplat]</option>";
     }
 ?>
 </select>
 </p>
 <script type="text/javascript">
-<!--
-funtion go(){
-location=
-document.FormCarian.carian.
-options[docuent.FormCarian.carian.selectedIndex].value
+function go(){
+    location=
+    document.FormCarian.carian.options[document.FormCarian.carian.selectedIndex].value
 }
-//-->
 </script>
 </form>
 </td>
