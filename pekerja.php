@@ -31,13 +31,17 @@ while($info1=mysqli_fetch_array($data1))
     <td><?php echo $no; ?></td>
     <td><?php echo $info1['idPekerja']; ?></td>
     <td><?php echo $info1['namaPekerja']; ?></td>
-    <td><?php echo $info1['kataLaluan']; ?></td>
+    <td><?php echo $info1['kataLaluan']; ?></td> main
+    <td><a href="kemaskini_pekerja.php?kemaskini_id=<?php echo $info1['idPekerja'];?>">Kemaskini
+    </a>
     <td><?php echo $info1['noTelefonPekerja']; ?></td>
-    <td><a href="kemaskini_pekerja.php?kemaskini_id=<? php echo $info1['idPekerja'];?>">Kemaskini</a>
+    <td><a href="kemaskini_pekerja.php?kemaskini_id=<? php echo $info1['idPekerja'];?>">Kemaskini</a> main
     <?php
     if($info1['status']!="ADMIN"){
-        ?>
+        ?> main
+        <a href="hapus_pekerja.php?hapus_id=<?php echo $info1['idPekerja'];?>">Hapus</a>
         <a href="hapus_pekerja.php?hapus_id=<?php echo $info1['nama_pengguna'];?>">Hapus</a>
+      main
         <?php
     } 
     ?>

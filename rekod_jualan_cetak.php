@@ -17,7 +17,7 @@ require('config.php');
 
 <td width="400" valign="bottom"><div align="right">
 <br />
-Tarikh Cetak: <php echo date("d/m/y"); ?>
+Tarikh Cetak: <php echo date( "d/m/y" ); ?>
 
 </td>
 </tr>
@@ -42,30 +42,48 @@ Tarikh Cetak: <php echo date("d/m/y"); ?>
 //istihar pemboleh ubah dan nilai pemula
 $jumBesar=0;
 $no=1;
-$bulan=$_POST["bulan"];
-$tahun=$_POST["tahun"];
+$bulan=$_POST['bulan'];
+$tahun=$_POST['tahun'];
 
 if($bulan=="-"&&$tahun=="-")
 {
+ main
+    $data1=mysqli_query($samb,"SELECT * FROM jualan ORDER BY noplat, tarikhJualan");
+=======
     $data1=mysqli_query($samb,"SELECT * FROM jualan
     ORDER BY nomplat,tarikhJualan");
+main
 }
 elseif ($bulan!="-"&&$tahun=="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
+ main
+    WHERE MONTH(tarikhJualan)='$bulan'
+    ORDER BY noplat, tarikhJualan");
+
     WHERE MONTH(tarikh)='$bulan'
     ORDER BY nomplat,tarikhJualan");
+ main
 }
 elseif ($bulan!="-"&&$tahun!="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
+ main
+    WHERE ((MONTH(tarikhJualan)='$bulan' AND YEAR(tarikh)='$tahun') )
+    ORDER BY noplat, tarikhJualan");
+
     WHERE ((MONTH(tarikhJualan)='$bulan' AND YEAR(tarikhJualan)='$tahun') )
     ORDER BY nomplat,tarikhJualan");
+ main
 }
-elseif ($bulan=="-"&&$tahun!="-")
+else
 {
+ main
+    $data1=mysqli_query($samb,"SELECT * FROM jualan WHERE YEAR(tarikhJualan)='$tahun' ORDER BY noplat, tarikhJualan") ;
+
     $data1=mysqli_query($samb,"SELECT * FROM jualan
     WHERE YEAR(tarikhJualan)='$tahun' ORDER BY nomplat,tarikhJualan");
+ main
 }
 
 $bil_rekod=mysqli_num_rows($data1);
@@ -73,16 +91,20 @@ while ($info1=mysqli_fetch_array($data1))
 {
     //SAMBUNG REKOD YANG BERKAITAN
     $datakereta=mysqli_query($samb,"SELECT * FROM kenderaan
-    WHERE nomplat='$info1[nomplat]'");
+    WHERE nomplat='$info1[noplat]'");
     $infokereta=mysqli_fetch_array($datakereta);
 
     //DAPATKAN NAMA PENGGUNA SISTEM
     $dataJurujual=mysqli_query($samb,"SELECT * FROM pengguna
-    WHERE nama_pengguna='$info1[idpekerja]'");
+    WHERE namaPekerja='$info1[namaPekerja]'");
     $infoJurujual=mysqli_fetch_array($dataJurujual);
 
     //susun semula tarikh
+ main
+    $tarikh = date("d/m/y", strtotime($info1['tarikhJualan']));
+
     $tarikh = data("d/m/y", strtotime($info1['tarikhJualan']));
+main
 
     ?>
 <!-- PAPAR REKOD DALAM JUALAN -->
@@ -109,7 +131,7 @@ $no++; }
 <td colspan="7" align="right">
 JUMLAH KESELURUHAN
 </td>
-<td>RM <?php echo number_format($jumlahBesar,2);?></td>
+<td>RM <?php echo number_format($jumBesar,2);?></td>
 </tr>
 </table>
 
