@@ -18,6 +18,7 @@ require('header.php');
 <td width="243"><b>Nama Pekerja</b></td>
 <td width="150"><b>Nama Pengguna</b></td>
 <td width="120"><b>Kata laluan</b></td>
+<td width="120"><b>No. Telefon</b></td>
 <td width="120"><b>Tindakan</b></td>
 </tr>
 <?php
@@ -30,15 +31,17 @@ while($info1=mysqli_fetch_array($data1))
     <td><?php echo $no; ?></td>
     <td><?php echo $info1['idPekerja']; ?></td>
     <td><?php echo $info1['namaPekerja']; ?></td>
-    <td><?php echo $info1['kataLaluan']; ?></td>
+    <td><?php echo $info1['kataLaluan']; ?></td> main
     <td><a href="kemaskini_pekerja.php?kemaskini_id=<?php echo $info1['idPekerja'];?>">Kemaskini
     </a>
+    <td><?php echo $info1['noTelefonPekerja']; ?></td>
+    <td><a href="kemaskini_pekerja.php?kemaskini_id=<? php echo $info1['idPekerja'];?>">Kemaskini</a> main
     <?php
-    //SEKIRANYA BUKAN ADMIN BOLEH DELETE AKAUN PENGGUNA - ADMIN TIDAK BOLEH
-    if ($info1['status']!="ADMIN")
-    {
-        ?>
+    if($info1['status']!="ADMIN"){
+        ?> main
         <a href="hapus_pekerja.php?hapus_id=<?php echo $info1['idPekerja'];?>">Hapus</a>
+        <a href="hapus_pekerja.php?hapus_id=<?php echo $info1['nama_pengguna'];?>">Hapus</a>
+      main
         <?php
     } 
     ?>

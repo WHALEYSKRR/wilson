@@ -47,23 +47,43 @@ $tahun=$_POST['tahun'];
 
 if($bulan=="-"&&$tahun=="-")
 {
+ main
     $data1=mysqli_query($samb,"SELECT * FROM jualan ORDER BY noplat, tarikhJualan");
+=======
+    $data1=mysqli_query($samb,"SELECT * FROM jualan
+    ORDER BY nomplat,tarikhJualan");
+main
 }
 elseif ($bulan!="-"&&$tahun=="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
+ main
     WHERE MONTH(tarikhJualan)='$bulan'
     ORDER BY noplat, tarikhJualan");
+
+    WHERE MONTH(tarikh)='$bulan'
+    ORDER BY nomplat,tarikhJualan");
+ main
 }
 elseif ($bulan!="-"&&$tahun!="-")
 {
     $data1=mysqli_query($samb,"SELECT * FROM jualan
+ main
     WHERE ((MONTH(tarikhJualan)='$bulan' AND YEAR(tarikh)='$tahun') )
     ORDER BY noplat, tarikhJualan");
+
+    WHERE ((MONTH(tarikhJualan)='$bulan' AND YEAR(tarikhJualan)='$tahun') )
+    ORDER BY nomplat,tarikhJualan");
+ main
 }
 else
 {
+ main
     $data1=mysqli_query($samb,"SELECT * FROM jualan WHERE YEAR(tarikhJualan)='$tahun' ORDER BY noplat, tarikhJualan") ;
+
+    $data1=mysqli_query($samb,"SELECT * FROM jualan
+    WHERE YEAR(tarikhJualan)='$tahun' ORDER BY nomplat,tarikhJualan");
+ main
 }
 
 $bil_rekod=mysqli_num_rows($data1);
@@ -80,12 +100,16 @@ while ($info1=mysqli_fetch_array($data1))
     $infoJurujual=mysqli_fetch_array($dataJurujual);
 
     //susun semula tarikh
+ main
     $tarikh = date("d/m/y", strtotime($info1['tarikhJualan']));
+
+    $tarikh = data("d/m/y", strtotime($info1['tarikhJualan']));
+main
 
     ?>
 <!-- PAPAR REKOD DALAM JUALAN -->
 <tr>
-<td><?php echo$no; ?></td>
+<td><?php echo $no; ?></td>
 <td><?php echo $infokereta['nomplat']; ?></td>
 <td><?php echo $infokereta['model']; ?></td>
 <td><?php echo "<img src='gambar/".$infokereta['gambar']."'
